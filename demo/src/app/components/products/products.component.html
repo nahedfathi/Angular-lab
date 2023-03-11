@@ -1,0 +1,38 @@
+<div class="mt-5">
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">quantity</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <th scope="row">{{ product.id }}</th>
+            <td> 
+                {{ product.productName }}
+            </td>
+            <td>
+              {{ product.price }}
+            </td>
+            <td>{{ product.quantity }}</td>
+            <td>
+              <i
+             routerLink="/products/edit/{{product.id}}"
+              class="text-info fs-3 mx-1 bi bi-pencil-square"></i>
+              <i 
+              (click)="delete(product.id)"
+              class="bi bi-x-circle fs-3 mx-3 text-danger"></i>
+              <i 
+                 routerLink="/products/{{ product.id }}"
+                class="text-success mx-2 fs-3 bi bi-eye-fill"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

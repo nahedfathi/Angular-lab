@@ -1,0 +1,48 @@
+<form [formGroup]="productform"  (submit)="submitform($event)">
+    <div class="container">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">name</label>
+      <input 
+      formControlName="productName"
+      type="text" class="form-control" name="productName" aria-describedby="emailHelp">
+   
+    </div>
+    <ng-container *ngIf="name.hasError('required')">
+        <div class="text-danger" *ngIf="name.touched">
+           name is required
+          </div>
+    </ng-container>
+   
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">price</label>
+      <input 
+      formControlName="price"
+      type="text" class="form-control" name="price">
+    </div>
+    <ng-container *ngIf="price.hasError('pattern')">
+        <div class="text-danger" *ngIf="price.touched">
+           price should be number
+          </div>
+    </ng-container>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">quantity</label>
+        <input
+        formControlName="quantity"
+        type="text" class="form-control" name="quantity">
+        
+      </div>
+      <ng-container *ngIf="quantity.hasError('required')">
+        <div class="text-danger" *ngIf="quantity.touched">
+          quantity is required
+          </div>
+    </ng-container>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">image</label>
+        <input
+        formControlName="image"
+        type="file" class="form-control" name="imgUrl">
+      </div>
+    {{this.productform.value |json}} <br>
+    <button type="submit" class="btn btn-primary">{{productid ? "Edit":"Add"}}</button>
+</div>
+  </form>
